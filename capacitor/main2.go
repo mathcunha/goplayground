@@ -11,12 +11,13 @@ func main() {
 	e := capacitor.MockExecutor{"/home/vagrant/go/src/github.com/mathcunha/CloudCapacitor/config/wordpress_cpu_mem.csv", nil}
 	e.Load()
 	slos := []float32{10000, 20000, 30000, 40000, 50000}
-	//slos := []float32{30000}
-	//modes := []string{"Strict", "Mem"}
 	modes := []string{"Strict", "Mem", "CPU", "Price"}
 	equi := []bool{false, true, true, true}
 	fmt.Println("mode,slo,property,value")
 	for i, mode := range modes {
+		if i == 1 {
+			vms, _ = capacitor.LoadTypes("/home/vagrant/go/src/github.com/mathcunha/CloudCapacitor/config/dspace_nocat.yml")
+		}
 		for _, slo := range slos {
 			dspace := capacitor.NewDeploymentSpace(&vms, 7.0, 4)
 			destDS := dspace.CapacityBy(mode)
