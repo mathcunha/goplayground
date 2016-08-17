@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 func main() {
-	q := strconv.Quote("SW®±")
+	q := "SW®±"
+	fmt.Println(q)
+	q = "SW\u00AE\u00B1"
 	fmt.Println(q)
 }
