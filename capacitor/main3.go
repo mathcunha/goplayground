@@ -17,7 +17,7 @@ func main() {
 	equi := []bool{false, false, false, false, false}
 	bypass := []bool{true, false, false, false, true}
 
-	fmt.Println("mode,slo,property,value")
+	fmt.Println("mode,slo,property,value,length")
 	for i, mode := range modes {
 		for _, slo := range slos {
 			var dspace capacitor.DeploymentSpace
@@ -36,7 +36,7 @@ func main() {
 			fmt.Printf("\"Prop:%s Cat:%t\",%.0f,%q,%.4f\n", modes[i], bypass[i], slo/1000, "metric", capacitor.CalcCapacityAccuracy(c, d, a))
 			fmt.Printf("\"Prop:%s Cat:%t\",%.0f,%q,%.4f\n", modes[i], bypass[i], slo/1000, "v1", capacitor.CalcCapacityAccuracyV1(c, d, a))
 			fmt.Printf("\"Prop:%s Cat:%t\",%.0f,%q,%.4f\n", modes[i], bypass[i], slo/1000, "v2", capacitor.CalcCapacityAccuracyV2(c, d, a))
-			fmt.Printf("\"Prop:%s Cat:%t\",%.0f,%q,%.4f\n", modes[i], bypass[i], slo/1000, "v3", capacitor.CalcCapacityAccuracyV3(c, d, a))
+			fmt.Printf("\"Prop:%s Cat:%t\",%.0f,%q,%.4f,%d\n", modes[i], bypass[i], slo/1000, "v3", capacitor.CalcCapacityAccuracyV3(c, d, a), c+d)
 			//fmt.Printf("\"%s\",%.0f,\"%s\",%d\n", labels[i], slo/10000, "soma", c+a)
 			//fmt.Printf("\"%s\",%.0f,%d,%d,%d,%d\n", mode, slo/1000, c, a, d, c+a)
 			//fmt.Printf("%s\tslo[%.0f]-\tconvergence:%d, absence:%d, divergence:%d\n", mode, slo/1000, c, a, d)
